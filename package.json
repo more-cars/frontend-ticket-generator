@@ -7,9 +7,9 @@
   },
   "description": "Frontend for the open car database 'More Cars'",
   "devDependencies": {
-    "@inquirer/prompts": "7.9.0",
+    "@inquirer/prompts": "8.1.0",
     "hygen": "6.2.11",
-    "inquirer": "12.10.0"
+    "inquirer": "13.1.0"
   },
   "engines": {
     "node": ">=24"
