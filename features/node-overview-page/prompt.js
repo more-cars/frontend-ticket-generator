@@ -1,8 +1,8 @@
 module.exports = [
     {
-        type: 'input',
+        message: 'Create "NODE overview page" tickets for which node type? (e.g. "Car Model")',
         name: 'nodeType',
-        message: 'Create "NODE overview page" tickets for which node type? (e.g. "Car Model")'
+        type: 'input'
     }, {
         message: 'ID of the corresponding parent (epic) ticket? (e.g. "MCF-176")',
         name: 'epicId',
