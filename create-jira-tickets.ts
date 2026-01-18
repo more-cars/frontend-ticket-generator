@@ -1,9 +1,10 @@
 import fs from "node:fs"
 import inquirer from 'inquirer'
-import {select} from "@inquirer/prompts"
-import {createTickets} from "./lib/createTickets"
 import {convertToCliParameters} from "./lib/convertToCliParameters"
 import {spawnShellCommand} from "./lib/spawnShellCommand"
+import {createTickets} from "./lib/createTickets"
+import {select} from "@inquirer/prompts"
+import {dasherize} from "inflection"
 
 prepareAndCreateTickets().then(() => true)
 
@@ -15,9 +16,11 @@ async function prepareAndCreateTickets() {
 
     const feature = await promptFeature()
     const featureParameters = await promptFeatureParameters(feature)
+    const nodeTypeProperties = getNodeTypeProperties(featureParameters['nodeType'])
     const cliParameters = convertToCliParameters(featureParameters)
 
-    const hygenCommand = `HYGEN_OVERWRITE=1 HYGEN_TMPLS='${__dirname}' hygen features ${feature} ${cliParameters}`
+    const hygenCommand = `HYGEN_OVERWRITE=1 HYGEN_TMPLS='${__dirname}' hygen features ${feature} ${cliParameters} --props='${JSON.stringify(nodeTypeProperties)}'`
+    console.log(hygenCommand)
     await spawnShellCommand(hygenCommand)
 
     const data = JSON.parse(fs.readFileSync(ticketTreePath, 'utf8'))
@@ -28,6 +31,7 @@ async function prepareAndCreateTickets() {
 async function promptFeature() {
     const choices = [
         {value: 'node-overview-page'},
+        {value: 'node-detail-page'},
     ]
 
     return select({
@@ -40,4 +44,8 @@ async function promptFeatureParameters(feature: string) {
     const questions = require(`${__dirname}/features/${feature}/prompt.js`)
 
     return inquirer.prompt(questions)
+}
+
+function getNodeTypeProperties(nodeType: string) {
+    return require(`./node-type-properties/${dasherize(nodeType.toLowerCase())}-properties.json`)
 }
