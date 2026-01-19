@@ -14,7 +14,7 @@ to: _temp/ticketTree.json
                 "The overview page always returns with status code `200`, no matter if any <%= h.changeCase.upper(nodeType) %> exists or not.",
                 "By default, the <%= h.changeCase.upper(h.inflection.pluralize(nodeType)) %> are sorted `ascending` by their `name`.",
                 "The sorting is always case-insensitive.",
-                "Each <%= h.changeCase.upper(nodeType) %> is presented with a thumbnail image, its primary information and a link to its detail page.",
+                "Each <%= h.changeCase.upper(nodeType) %> is presented with its primary information and a link to its detail page.",
                 "The overview displays at most 100 <%= h.changeCase.upper(h.inflection.pluralize(nodeType)) %> at once.",
                 "When there are more than 100 <%= h.changeCase.upper(h.inflection.pluralize(nodeType)) %> then the `pagination` feature is activated.",
                 "Pagination allows the user to scroll through all <%= h.changeCase.upper(h.inflection.pluralize(nodeType)) %> - 100 items at a time.",
@@ -53,21 +53,6 @@ to: _temp/ticketTree.json
                                 gherkin.push('When the user visits the \\"' + h.changeCase.upper(nodeType) + '\\" overview page')
                                 gherkin.push('Then the page should contains no \\"' + h.changeCase.upper(nodeType) + '\\" list')
                                 gherkin.push('And the page should contain a message, informing the user that there are no \\"' + h.changeCase.upper(nodeType) + '\\"s')
-                            %>
-                            "gherkin": "<%- gherkin.join('\\n') %>"
-                        }
-                    ]
-                }, {
-                    "title": "Each <%= h.changeCase.upper(nodeType) %> in the list contains a thumbnail image",
-                    "description": "The thumbnail shows the main image of the resp. <%= h.changeCase.upper(nodeType) %>. When it has no main image then the generic fallback image is displayed. Each image is available in multiple sizes (resolutions). The one matching the screen size best should be used. Meaning, it should not be too small (bad quality) and not too big (slow download).",
-                    "responseCode": "200",
-                    "tests": [
-                        {
-                            "title": "Expecting a thumbnail image for each <%= h.changeCase.upper(nodeType) %> in the list",
-                            <%
-                                gherkin = []
-                                gherkin.push('When the user visits the \\"' + h.changeCase.upper(nodeType) + '\\" overview page')
-                                gherkin.push('Then all items in the \\"' + h.changeCase.upper(nodeType) + '\\" list should contain a thumbnail image')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
                         }
