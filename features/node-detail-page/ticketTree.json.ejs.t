@@ -15,10 +15,9 @@ to: _temp/ticketTree.json
                 "The detail page has a fact sheet. It contains all properties that are specified for the node type <%= h.changeCase.upper(nodeType) %>. -> See <%= h.changeCase.upper(h.changeCase.kebab(epicId)) %>",
                 "Each property in the fact sheet is displayed as a key-value pair, with the property name and the property value.",
                 "When a property has no value (null or undefined) it is still displayed in the fact sheet, but marked as empty.",
-                "The name of the <%= h.changeCase.upper(nodeType) %> is reflected in the main headline and in the page title. The page title might contain additional text, like the suffix 'More Cars'. The main headline might also contain additional information to make generic nodes more unique.",
-                "A representative image of the <%= h.changeCase.upper(nodeType) %> is displayed at a prominent location on the page."
+                "The name of the <%= h.changeCase.upper(nodeType) %> is reflected in the main headline and in the page title. The page title might contain additional text, like the suffix 'More Cars'. The main headline might also contain additional information to make generic nodes more unique."
             ],
-            "apiPath": "/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>",
+            "apiPath": "/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<<%= h.changeCase.kebab(nodeType) %>-id>",
             "responseOptions": [
                 "200",
                 "404"
@@ -36,32 +35,6 @@ to: _temp/ticketTree.json
                                 gherkin.push('When the user visits the detail page of a \\"' + h.changeCase.upper(nodeType) + '\\"')
                                 gherkin.push('Then the page title should contain the \\"' + h.changeCase.upper(nodeType) + '\\" name')
                                 gherkin.push('And the main headline should contain the \\"' + h.changeCase.upper(nodeType) + '\\" name')
-                            %>
-                            "gherkin": "<%- gherkin.join('\\n') %>"
-                        }
-                    ]
-                }, {
-                    "title": "The detail page shows a representative image of the <%= h.changeCase.upper(nodeType) %>",
-                    "description": "For the representative image the 'prime image' of the <%= h.changeCase.upper(nodeType) %> is used. When there is no 'prime image' then a fallback image is displayed. The image is displayed in a medium size. Medium means significantly larger than thumbnail size, but also significantly smaller than the screen size.",
-                    "responseCode": "200",
-                    "tests": [
-                        {
-                            "title": "Expecting a photo of the <%= h.changeCase.upper(nodeType) %> to be displayed on the detail page",
-                            <%
-                                gherkin = []
-                                gherkin.push('When the user visits the detail page of a \\"' + h.changeCase.upper(nodeType) + '\\"')
-                                gherkin.push('Then the page should contain a photo section')
-                                gherkin.push('And the photo section should contain an image of the \\"' + h.changeCase.upper(nodeType) + '\\"')
-                            %>
-                            "gherkin": "<%- gherkin.join('\\n') %>"
-                        }, {
-                            "title": "Expecting the photo section to show a fallback image when the <%= h.changeCase.upper(nodeType) %> has no representative image",
-                            <%
-                                gherkin = []
-                                gherkin.push('Given the \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\" has no representative image')
-                                gherkin.push('When the user visits the detail page of the \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\"')
-                                gherkin.push('Then the page should contain a photo section')
-                                gherkin.push('And the photo section should contain a fallback image')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
                         }

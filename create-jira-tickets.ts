@@ -32,6 +32,7 @@ async function promptFeature() {
     const choices = [
         {value: 'node-overview-page'},
         {value: 'node-detail-page'},
+        {value: 'node-detail-page-representative-image'},
     ]
 
     return select({
