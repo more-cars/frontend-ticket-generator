@@ -7,13 +7,13 @@ to: _temp/ticketTree.json
         "jiraId": "<%= h.changeCase.upper(h.changeCase.kebab(epicId)) %>",
         "dataStructure": null,
         "stories": [{
-            "title": "<%= h.changeCase.upper(nodeType) %> detail page » Representative IMAGE",
+            "title": "<%= h.changeCase.upper(nodeType) %> detail page » Lead IMAGE",
             "userStory": "As a visitor\nI want the detail page to show a photo of the <%= h.changeCase.upper(nodeType) %>\nSo I can instantly see how it looks like\nOr to quickly verify that I am on the correct page",
             "specificationList": [
-                "The detail page contains a section were a representative image of the <%= h.changeCase.upper(nodeType) %> is displayed.",
+                "The detail page contains a section were the lead image of the <%= h.changeCase.upper(nodeType) %> is displayed.",
                 "The image is displayed in a prominent location on the page.",
                 "The image has a medium size. It is significantly larger than the thumbnail images, but also much smaller than the screen size (in desktop view).",
-                "This representative image is provided by the API via the 'prime image' relationship.",
+                "This lead image is provided by the API via the 'prime image' relationship.",
                 "When the <%= h.changeCase.upper(nodeType) %> has no 'prime image' then a generic fallback image is displayed instead."
             ],
             "apiPath": "/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<<%= h.changeCase.kebab(nodeType) %>-id>",
@@ -22,8 +22,8 @@ to: _temp/ticketTree.json
             ],
             "acceptanceCriteria": [
                 {
-                    "title": "The detail page shows a representative image of the <%= h.changeCase.upper(nodeType) %>",
-                    "description": "The representative image corresponds with the 'prime image' relationship in the API. When there is no 'prime image' then a fallback image is displayed. The image is displayed in a medium size. Medium means significantly larger than thumbnail size, but also significantly smaller than the screen size.",
+                    "title": "The detail page shows the lead image of the <%= h.changeCase.upper(nodeType) %>",
+                    "description": "The lead image corresponds with the 'prime image' relationship in the API. When there is no 'prime image' then a fallback image is displayed. The image is displayed in a medium size. Medium means significantly larger than thumbnail size, but also significantly smaller than the screen size.",
                     "responseCode": "200",
                     "tests": [
                         {
@@ -36,10 +36,10 @@ to: _temp/ticketTree.json
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
                         }, {
-                            "title": "Expecting the photo section to show a fallback image when the <%= h.changeCase.upper(nodeType) %> has no representative image",
+                            "title": "Expecting the photo section to show a fallback image when the <%= h.changeCase.upper(nodeType) %> has no lead image",
                             <%
                                 gherkin = []
-                                gherkin.push('Given the \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\" has no representative image')
+                                gherkin.push('Given the \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\" has no lead image')
                                 gherkin.push('When the user visits the detail page of the \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\"')
                                 gherkin.push('Then the page should contain a photo section')
                                 gherkin.push('And the photo section should contain a fallback image')
