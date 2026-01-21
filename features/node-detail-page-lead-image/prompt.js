@@ -1,6 +1,6 @@
 module.exports = [
     {
-        message: 'Create "NODE detail page - Representative IMAGE" tickets for which node type? (e.g. "Car Model")',
+        message: 'Create "NODE detail page - Lead IMAGE" tickets for which node type? (e.g. "Car Model")',
         name: 'nodeType',
         type: 'input'
     }, {
