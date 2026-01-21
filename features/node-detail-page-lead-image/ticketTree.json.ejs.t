@@ -39,7 +39,8 @@ to: _temp/ticketTree.json
                             "title": "Expecting the photo section to show a fallback image when the <%= h.changeCase.upper(nodeType) %> has no lead image",
                             <%
                                 gherkin = []
-                                gherkin.push('Given the \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\" has no lead image')
+                                gherkin.push('Given there is a \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\"')
+                                gherkin.push('And the \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\" has no lead image')
                                 gherkin.push('When the user visits the detail page of the \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\"')
                                 gherkin.push('Then the page should contain a photo section')
                                 gherkin.push('And the photo section should contain a fallback image')
