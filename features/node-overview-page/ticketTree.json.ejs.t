@@ -82,7 +82,7 @@ to: _temp/ticketTree.json
                             <%
                                 gherkin = []
                                 gherkin.push('When the user visits the \\"' + h.changeCase.upper(nodeType) + '\\" overview page')
-                                gherkin.push('Then all items in the \\"' + h.changeCase.upper(nodeType) + '\\" list should link to their detail pages')
+                                gherkin.push('Then each item in the \\"' + h.changeCase.upper(nodeType) + '\\" list should link to its detail page')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
                         }
