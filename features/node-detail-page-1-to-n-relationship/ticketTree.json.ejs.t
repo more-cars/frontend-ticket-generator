@@ -10,10 +10,10 @@ to: _temp/ticketTree.json
             "title": "<%= h.changeCase.upper(nodeType) %> detail page » <%= h.changeCase.upper(h.inflection.pluralize(partnerNodeType)) %>",
             "userStory": "As a visitor\nI want the <%= h.changeCase.upper(nodeType) %> detail page to show all connected <%= h.changeCase.upper(h.inflection.pluralize(partnerNodeType)) %>\nSo I can ...",
             "specificationList": [
-                "The detail page contains a section with a list of all connected <%= h.changeCase.upper(h.inflection.pluralize(partnerNodeType)) %>.",
+                "The <%= h.changeCase.upper(nodeType) %> detail page contains a section with a list of all connected <%= h.changeCase.upper(h.inflection.pluralize(partnerNodeType)) %>.",
                 "Each <%= h.changeCase.upper(partnerNodeType) %> in the list is presented with its name and primary information.",
                 "Each <%= h.changeCase.upper(partnerNodeType) %> in the list contains a link to its detail page.",
-                "Each <%= h.changeCase.upper(partnerNodeType) %> in the list contains a thumbnail image.",
+                "Each <%= h.changeCase.upper(partnerNodeType) %> in the list has a thumbnail image.",
                 "When there is no <%= h.changeCase.upper(partnerNodeType) %> connected to the <%= h.changeCase.upper(nodeType) %> then the section is not displayed at all."
             ],
             "apiPath": "",
@@ -87,7 +87,7 @@ to: _temp/ticketTree.json
                     ]
                 }, {
                     "title": "Each <%= h.changeCase.upper(partnerNodeType) %> in the list contains a thumbnail image",
-                    "description": "The thumbnail shows the lead image of the resp. <%= h.changeCase.upper(partnerNodeType) %>. When it has no main image then a generic fallback image is displayed. The image is loaded in a small resolution to keep the loading times short.",
+                    "description": "The thumbnail shows the lead image of the resp. <%= h.changeCase.upper(partnerNodeType) %>. When it has no lead image then a generic fallback image is displayed. The image is loaded in a small resolution to keep the loading times short.",
                     "responseCode": "N/A",
                     "tests": [
                         {
