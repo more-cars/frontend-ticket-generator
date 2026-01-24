@@ -13,6 +13,7 @@ to: _temp/ticketTree.json
                 "The detail page contains a section with a list of all connected <%= h.changeCase.upper(h.inflection.pluralize(partnerNodeType)) %>.",
                 "Each <%= h.changeCase.upper(partnerNodeType) %> in the list is presented with its name and primary information.",
                 "Each <%= h.changeCase.upper(partnerNodeType) %> in the list contains a link to its detail page.",
+                "Each <%= h.changeCase.upper(partnerNodeType) %> in the list contains a thumbnail image.",
                 "When there is no <%= h.changeCase.upper(partnerNodeType) %> connected to the <%= h.changeCase.upper(nodeType) %> then the section is not displayed at all."
             ],
             "apiPath": "",
@@ -80,6 +81,22 @@ to: _temp/ticketTree.json
                                 gherkin.push('When the user visits the detail page of a \\"' + h.changeCase.upper(nodeType) + '\\"')
                                 gherkin.push('Then the page should contain a \\"' + h.changeCase.upper(partnerNodeType) + '\\" section')
                                 gherkin.push('And each item in the \\"' + h.changeCase.upper(partnerNodeType) + '\\" list should contain primary information')
+                            %>
+                            "gherkin": "<%- gherkin.join('\\n') %>"
+                        }
+                    ]
+                }, {
+                    "title": "Each <%= h.changeCase.upper(partnerNodeType) %> in the list contains a thumbnail image",
+                    "description": "The thumbnail shows the lead image of the resp. <%= h.changeCase.upper(partnerNodeType) %>. When it has no main image then a generic fallback image is displayed. The image is loaded in a small resolution to keep the loading times short.",
+                    "responseCode": "N/A",
+                    "tests": [
+                        {
+                            "title": "Expecting each item in the <%= h.changeCase.upper(partnerNodeType) %> list to contain a thumbnail image",
+                            <%
+                                gherkin = []
+                                gherkin.push('When the user visits the detail page of a \\"' + h.changeCase.upper(nodeType) + '\\"')
+                                gherkin.push('Then the page should contain a \\"' + h.changeCase.upper(partnerNodeType) + '\\" section')
+                                gherkin.push('Then each item in the \\"' + h.changeCase.upper(partnerNodeType) + '\\" list should contain a thumbnail image')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
                         }
