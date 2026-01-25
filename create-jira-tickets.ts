@@ -34,6 +34,7 @@ async function promptFeature() {
         {value: 'node-detail-page'},
         {value: 'node-detail-page-lead-image'},
         {value: 'node-detail-page-1-to-n-relationship'},
+        {value: 'node-detail-page-1-to-1-relationship'},
     ]
 
     return select({
