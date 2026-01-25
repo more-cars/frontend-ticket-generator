@@ -64,7 +64,7 @@ to: _temp/ticketTree.json
                                 gherkin = []
                                 gherkin.push('When the user visits the detail page of a \\"' + h.changeCase.upper(nodeType) + '\\"')
                                 gherkin.push('Then the page should contain a \\"' + h.changeCase.upper(partnerNodeType) + '\\" section')
-                                gherkin.push('And the \\"' + h.changeCase.upper(partnerNodeType) + '\\" section contain a link to the detail page')
+                                gherkin.push('And the \\"' + h.changeCase.upper(partnerNodeType) + '\\" section should contain a link to the detail page')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
                         }
