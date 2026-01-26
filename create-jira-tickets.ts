@@ -31,6 +31,7 @@ async function prepareAndCreateTickets() {
 async function promptFeature() {
     const choices = [
         {value: 'node-overview-page'},
+        {value: 'node-overview-page-preview-images'},
         {value: 'node-detail-page'},
         {value: 'node-detail-page-lead-image'},
         {value: 'node-detail-page-1-to-n-relationship'},
