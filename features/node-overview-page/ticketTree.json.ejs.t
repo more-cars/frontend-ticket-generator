@@ -97,7 +97,7 @@ to: _temp/ticketTree.json
                             <%
                                 gherkin = []
                                 gherkin.push('When the user visits the \\"' + h.changeCase.upper(nodeType) + '\\" overview page')
-                                gherkin.push('Then the \\"' + h.changeCase.upper(nodeType) + '\\" list should be sorted by \\"' + name + '\\" in \\"' + ascending + '\\" order')
+                                gherkin.push('Then the \\"' + h.changeCase.upper(nodeType) + '\\" list should be sorted by \\"name\\" in \\"ascending\\" order')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
                         }
