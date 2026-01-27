@@ -35,7 +35,7 @@ to: _temp/ticketTree.json
                             <%
                                 gherkin = []
                                 gherkin.push('When the user visits the \\"' + h.changeCase.upper(nodeType) + '\\" overview page')
-                                gherkin.push('Then the page should contain a \\"' + h.changeCase.upper(nodeType) + '\\" list')
+                                gherkin.push('Then the page should contain a \\"' + h.changeCase.upper(nodeType) + '\\" section')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
                         }
@@ -51,7 +51,7 @@ to: _temp/ticketTree.json
                                 gherkin = []
                                 gherkin.push('Given there is no \\"' + h.changeCase.upper(nodeType) + '\\"')
                                 gherkin.push('When the user visits the \\"' + h.changeCase.upper(nodeType) + '\\" overview page')
-                                gherkin.push('Then the page should contains no \\"' + h.changeCase.upper(nodeType) + '\\" list')
+                                gherkin.push('Then the page should contain no \\"' + h.changeCase.upper(nodeType) + '\\" section')
                                 gherkin.push('And the page should contain a message, informing the user that there are no \\"' + h.changeCase.upper(nodeType) + '\\"s')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
@@ -113,7 +113,7 @@ to: _temp/ticketTree.json
                                 gherkin = []
                                 gherkin.push('Given there are 105 \\"' + h.changeCase.upper(nodeType) + '\\"s')
                                 gherkin.push('When the user visits the \\"' + h.changeCase.upper(nodeType) + '\\" overview page')
-                                gherkin.push('Then the page should contain a \\"' + h.changeCase.upper(nodeType) + '\\" list')
+                                gherkin.push('Then the page should contain a \\"' + h.changeCase.upper(nodeType) + '\\" section')
                                 gherkin.push('And the \\"' + h.changeCase.upper(nodeType) + '\\" list should contain 100 items')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
