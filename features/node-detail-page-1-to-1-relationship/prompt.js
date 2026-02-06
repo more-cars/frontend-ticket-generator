@@ -8,7 +8,7 @@ module.exports = [
         name: 'partnerNodeType',
         type: 'input',
     }, {
-        message: 'What example name should be used for the relationship partner in the tests? (e.g. "VW")',
+        message: 'What example name should be used for the start node in the tests? (e.g. "VW")',
         name: 'exampleName',
         type: 'input',
     }, {
