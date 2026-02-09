@@ -5,7 +5,7 @@
     "ts-node": "10.9.2",
     "typescript": "5.9.3"
   },
-  "description": "Frontend for the open car database 'More Cars'",
+  "description": "Ticket generator for all Frontend-related features in 'More Cars'",
   "devDependencies": {
     "@inquirer/prompts": "8.2.0",
     "hygen": "6.2.11",
