@@ -13,8 +13,10 @@ to: _temp/ticketTree.json
                 "The detail page contains a section were the lead image of the <%= h.changeCase.upper(nodeType) %> is displayed.",
                 "The image is displayed in a prominent location on the page.",
                 "The image has a medium size. It is significantly larger than the thumbnail images, but also much smaller than the screen size (in desktop view).",
-                "This lead image is provided by the API via the 'prime image' relationship.",
-                "When the <%= h.changeCase.upper(nodeType) %> has no 'prime image' then a generic fallback image is displayed instead."
+                "This lead image is provided by the API via the 'has prime image' relationship.",
+                "When the <%= h.changeCase.upper(nodeType) %> has no lead image then a generic fallback image is displayed instead.",
+                "License information is displayed next to the lead image in the format “Photo by <creator> / <license>“.",
+                "The license information contains a link to the resp. IMAGE node."
             ],
             "apiPath": "/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<<%= h.changeCase.kebab(nodeType) %>-id>",
             "responseOptions": [
@@ -44,6 +46,23 @@ to: _temp/ticketTree.json
                                 gherkin.push('When the user visits the detail page of the \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\"')
                                 gherkin.push('Then the page should contain a photo section')
                                 gherkin.push('And the photo section should contain a fallback image')
+                            %>
+                            "gherkin": "<%- gherkin.join('\\n') %>"
+                        }
+                    ]
+                },
+                {
+                    "title": "License information is displayed for the <%= h.changeCase.upper(nodeType) %> lead image",
+                    "description": "Format: “Photo by <creator> / <license>“",
+                    "responseCode": "",
+                    "tests": [
+                        {
+                            "title": "Expecting to see license information for the <%= h.changeCase.upper(nodeType) %> lead image",
+                            <%
+                                gherkin = []
+                                gherkin.push('When the user visits the detail page of a \\"' + h.changeCase.upper(nodeType) + '\\"')
+                                gherkin.push('Then the page should contain a photo section')
+                                gherkin.push('And there should be license information displayed next to the lead image')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
                         }
