@@ -54,7 +54,7 @@ to: _temp/ticketTree.json
                 {
                     "title": "License information is displayed for the <%= h.changeCase.upper(nodeType) %> lead image",
                     "description": "Format: “Photo by <creator> / <license>“",
-                    "responseCode": "",
+                    "responseCode": "200",
                     "tests": [
                         {
                             "title": "Expecting to see license information for the <%= h.changeCase.upper(nodeType) %> lead image",
