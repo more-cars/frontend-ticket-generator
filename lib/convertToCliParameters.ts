@@ -1,4 +1,4 @@
-export function convertToCliParameters(parameters: any) {
+export function convertToCliParameters(parameters: any[]) {
     const cliParams = []
 
     for (const param in parameters) {

@@ -19,7 +19,8 @@
   "name": "@more-cars/frontend-ticket-generator",
   "repository": "https://github.com/more-cars/frontend-ticket-generator",
   "scripts": {
-    "start": "node --env-file=.env -r ts-node/register create-jira-tickets.ts"
+    "start": "node --env-file=.env -r ts-node/register create-jira-tickets.ts",
+    "lint": "npx eslint lib"
   },
   "version": "0.1.0"
 }

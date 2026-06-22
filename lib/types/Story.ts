@@ -1,7 +1,7 @@
 export type Story = {
     title: string
     userStory: string | null
-    specificationList: Array<string>
+    specificationList: string[]
     apiPath: string
     responseOptions: string[]
 }
