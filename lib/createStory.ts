@@ -1,40 +1,42 @@
-import axios from "axios"
 import {getJiraApiAuthKey} from "./getJiraApiAuthKey"
 import {getJiraApiBaseUrl} from "./getJiraApiBaseUrl"
 import type {Story} from "./types/Story"
 
-export async function createStory(data: Story): Promise<string> {
+export async function createStory(data: Story) {
     const payload = getPayload(data)
 
-    const response = await axios
-        .post(getJiraApiBaseUrl() + 'issue', payload, {
-            headers: {
-                'Authorization': `Basic ${getJiraApiAuthKey()}`,
-                'Content-Type': 'application/json',
-            }
-        })
+    const response = await fetch(getJiraApiBaseUrl() + 'issue', {
+        method: 'POST',
+        headers: {
+            'Authorization': `Basic ${getJiraApiAuthKey()}`,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+    })
 
-    return response.data.key
+    const json = await response.json()
+
+    return json.key
 }
 
 function getPayload(data: Story) {
     return {
         fields: {
-            'project': {
+            project: {
                 key: 'MCF'
             },
-            'issuetype': {
+            issuetype: {
                 id: '10001'
             },
-            'summary': data.title,
-            'description': {
+            summary: data.title,
+            description: {
                 version: 1,
                 type: 'doc',
                 content: [
                     getSpecificationList(data.specificationList),
                 ]
             },
-            'customfield_10691': {
+            customfield_10691: {
                 version: 1,
                 type: 'doc',
                 content: [
@@ -49,8 +51,8 @@ function getPayload(data: Story) {
                     }
                 ]
             },
-            'customfield_10731': data.apiPath,
-            'customfield_10767': getResponseOptionsList(data.responseOptions)
+            customfield_10731: data.apiPath,
+            customfield_10767: getResponseOptionsList(data.responseOptions)
         }
     }
 }

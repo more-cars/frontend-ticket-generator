@@ -2,7 +2,6 @@
   "author": "Dennis Gerike",
   "dependencies": {
     "@types/node": "25.9.1",
-    "axios": "1.18.0",
     "ts-node": "10.9.2",
     "typescript": "5.9.3"
   },

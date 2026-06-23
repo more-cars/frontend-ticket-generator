@@ -1,23 +1,27 @@
-import axios from "axios"
 import {getJiraApiAuthKey} from "./getJiraApiAuthKey"
 import {getJiraApiBaseUrl} from "./getJiraApiBaseUrl"
 import type {AcceptanceCriterion} from "./types/AcceptanceCriterion"
 
 export async function createAcceptanceCriterion(data: AcceptanceCriterion, parentId: string): Promise<string> {
-    const response = await axios
-        .post(getJiraApiBaseUrl() + 'issue', {
+    const response = await fetch(getJiraApiBaseUrl() + 'issue', {
+        method: 'POST',
+        headers: {
+            'Authorization': `Basic ${getJiraApiAuthKey()}`,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
             fields: {
-                'project': {
+                project: {
                     key: 'MCF'
                 },
-                'issuetype': {
+                issuetype: {
                     id: '10166'
                 },
-                'parent': {
+                parent: {
                     key: parentId
                 },
-                'summary': data.title,
-                'description': {
+                summary: data.title,
+                description: {
                     version: 1,
                     type: 'doc',
                     content: [
@@ -32,18 +36,16 @@ export async function createAcceptanceCriterion(data: AcceptanceCriterion, paren
                         }
                     ]
                 },
-                'customfield_10801': {
+                customfield_10801: {
                     id: getMappedResponseCode(data.responseCode)
                 },
             }
-        }, {
-            headers: {
-                'Authorization': `Basic ${getJiraApiAuthKey()}`,
-                'Content-Type': 'application/json',
-            }
         })
+    })
 
-    return response.data.key
+    const json = await response.json()
+
+    return json.key
 }
 
 function getMappedResponseCode(responseCode: string) {
